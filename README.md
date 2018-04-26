@@ -6,6 +6,8 @@
 
 If someone starts typing in a slack channel that you're in, this module will make it say you're typing.
 
+![typing example gif](typing.gif)
+
 ## Usage
 
 Create a .env file that contains your [user token](https://api.slack.com/custom-integrations/legacy-tokens)
@@ -31,6 +33,7 @@ With git, run
 $ git clone https://github.com/jekrb/slacktyping.git
 $ cd slacktyping
 ... edit .env to add token and optional delay...
+$ npm install
 $ npm start
 ```
 
