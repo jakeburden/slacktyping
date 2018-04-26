@@ -1,0 +1,36 @@
+{
+  "name": "slacktyping",
+  "version": "1.0.0",
+  "description": "Make slack show that you're typing when others start typing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "slack",
+    "typing",
+    "slacktyping",
+    "api",
+    "event",
+    "type",
+    "rtm"
+  ],
+  "author": "Jake Burden <jake@doge.haus>",
+  "license": "MIT",
+  "dependencies": {
+    "env2": "^2.2.0",
+    "pump": "^3.0.0",
+    "slack": "^11.0.0",
+    "through2": "^2.0.3",
+    "websocket-stream": "^5.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jekrb/slacktyping.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jekrb/slacktyping/issues"
+  },
+  "homepage": "https://github.com/jekrb/slacktyping#readme"
+}
