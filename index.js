@@ -24,7 +24,7 @@ slack.rtm.connect(opts, function (err, rtm) {
 
 function write (buf, enc, next) {
   var row = JSON.parse(buf.toString())
-  var isDnd = dnd.indexOf(row.channel) > -1
+  var isDnd = dnd.indexOf(row.channel) > -1 || dnd.indexOf(row.user) > -1
   var skip = row.type !== 'user_typing' || isDnd
 
   if (skip) return next()
