@@ -13,17 +13,21 @@ var opts = {
 }
 
 var num = 1
+main()
 
-slack.rtm.connect(opts, function (err, rtm) {
-  if (err) return console.error(err)
-  var stream = websocket(rtm.url)
-  pump(stream, through(write), stream, function (err) {
-    if (err) console.error(err)
+function main () {
+  slack.rtm.connect(opts, function (err, rtm) {
+    if (err) return console.error(err)
+    var stream = websocket(rtm.url)
+    pump(stream, through(write), stream, function (err) {
+      if (err) console.error(err)
+    })
   })
-})
+}
 
 function write (buf, enc, next) {
   var row = JSON.parse(buf.toString())
+  if (row.type === 'goodbye') main()
   var isDnd = dnd.indexOf(row.channel) > -1 || dnd.indexOf(row.user) > -1
   var skip = row.type !== 'user_typing' || isDnd
 
