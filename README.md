@@ -12,6 +12,7 @@ If someone starts typing in a slack channel that you're in, this module will mak
 
 Create a .env file that contains your [user token](https://api.slack.com/custom-integrations/legacy-tokens)
 - Optionally, add a delay to make your "typing" begin a bit later and seem more "human."
+- Optionally, add a comma seperated "do not disturb" list (dnd) to prevent this from working in selected channels.
 
 It should like like this:
 
@@ -19,6 +20,7 @@ It should like like this:
 ```
 token=xoxp-123456....
 delay=1300
+dnd=C12345,C4324...
 ```
 
 Then install the module via git or npm, directions below.

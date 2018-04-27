@@ -6,6 +6,7 @@ var websocket = require('websocket-stream')
 
 var token = process.env.token
 var delay = process.env.delay || 0
+var dnd = process.env.dnd ? process.env.dnd.split(',') : []
 
 var opts = {
   token: token
@@ -23,12 +24,17 @@ slack.rtm.connect(opts, function (err, rtm) {
 
 function write (buf, enc, next) {
   var row = JSON.parse(buf.toString())
-  if (row.type !== 'user_typing') return next()
+  var isDnd = dnd.indexOf(row.channel) > -1
+  var skip = row.type !== 'user_typing' || isDnd
+
+  if (skip) return next()
+
   var msg = {
     id: num++,
     type: 'typing',
     channel: row.channel
   }
+
   var payload = JSON.stringify(msg)
   setTimeout(function () {
     next(null, payload)
